@@ -79,7 +79,7 @@ def main(request):
         return redirect('home')
 
   categories = CategoryProduct.objects.all()
-  products_promo = Product.objects.filter(category_id = 7)
+  products_promo = Product.objects.filter(category__slug = 'promo')
 
   context = dictExpand({
     'categories': categories,
