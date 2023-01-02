@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}
+GEORGE'S - Комбо
+{% endblock %}
+{% block content %}
+<section class="combo">
+   <div class="container">
+      <div class="combo__inner">
+         <div class="combo__title title">
+            <h4 class="title__item">{%for data in combo_section%}{{data.item_title}}{%endfor%}</h4>
+            <h1 class="title__main">{%for data in combo_section%}{{data.title}}{%endfor%}</h1>
+            <p class="title__sub">{%for data in combo_section%}{{data.sub_title}}{%endfor%}</p>
+         </div>
+         <form class="combo__form combo-form" id="combo-form">
+            <div class="combo-form__question" data-combo-question>
+               <h5 class="combo-form__title">Бургер</h5>
+               <div class="combo-form__select select-wrap">
+                  <label>
+                     <select class="combo-form__select" data-combo-select>
+                        {% for combo in combos %}
+                            {% if combo.product.published %}
+                                <option data-combo-product-price="{{combo.price}}" data-combo-product-image="{{combo.product.image.url}}">{{combo.product.name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                     </select>
+                  </label>
+               </div>
+            </div>
+            <!-- Фритюр -->
+            <div class="combo-form__question" data-combo-question>
+               <h5 class="combo-form__title">Фритюр</h5>
+               <div class="combo-form__select select-wrap">
+                  <label>
+                     <select class="combo-form__select" data-combo-select data-combo-select-deeps>
+                        <option data-combo-product-price="0" value="Картопля фрі L">
+                            Картопля фрі L
+                        </option>
+                        <option data-combo-product-price="0" value="Картопляні діпи L">
+                            Картопляні діпи L
+                        </option>
+                        <option data-combo-product-price="10" value="Нагетси 6шт.">
+                            Нагетси 6шт.
+                        </option>
+                     </select>
+                  </label>
+               </div>
+               <p class="combo-form__info">
+                  Велика картопля
+               </p>
+            </div>
+           <div class="combo-form__question" data-combo-question>
+              <h5 class="combo-form__title">Напої</h5>
+              <div class="combo-form__select select-wrap">
+                 <label>
+                    <select class="combo-form__select" data-combo-select>
+                       <option data-combo-product-price="5">Лимонад (класичний)</option>
+                       <!--<option data-combo-product-price="0">Лимонад (каракуйа)</option>-->
+                       <option data-combo-product-price="0">Coca-Cola</option>
+                       <option data-combo-product-price="0">Фанта</option>
+                       <option data-combo-product-price="0">Спрайт</option>
+                    </select>    
+                 </label>
+              </div>
+              <!--<p class="combo-form__info">-->
+              <!--    Великий напій-->
+              <!-- </p>-->
+           </div>
+           <div class="combo-form__question" data-combo-question>
+              <h5 class="combo-form__title">Соус</h5>
+              <div class="combo-form__select select-wrap">
+                 <label>
+                    <select class="combo-form__select" data-combo-select>
+                        <option data-combo-product-price="0">Без соусу</option>
+                      <option data-combo-product-price="15">Фірмовий</option>
+                      <option data-combo-product-price="15">Часниковий</option>
+                      <option data-combo-product-price="15">Майонез</option>
+                      <option data-combo-product-price="15">Сирний</option>
+                      <option data-combo-product-price="15">Кисло-солодкий</option>
+                      <option data-combo-product-price="15">Соус каррі</option>
+                      <option data-combo-product-price="15">Соус BBQ</option>
+                      <option data-combo-product-price="15">Солодкий чілі</option>
+                      <!--<option data-combo-product-price="0">Журавлиний</option>-->
+                    </select>    
+                 </label>
+              </div>
+              <p class="combo-form__info">
+                  За бажанням. Вартість - 15грн
+               </p>
+           </div>
+       
+            <button class="combo-form__button" data-combo-button-add>Додати в корзину</button>
+         </form>
+         <div class="combo__info combo-info">
+            <div class="combo-info__price">
+               Вартість за комбо: <span data-combo-total-price></span> грн
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}
+   GEORGES'S - Доставка їжі додому прямо зараз. Доставка фастфуду по Одесі
+{% endblock %}
+{% block content %}
+<section class="welcome" id="welcome">
+   <div class="welcome__container container swiper" id="promo-slider">
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+      <div class="welcome__inner swiper-wrapper">
+         <div class="welcome__content swiper-slide">
+            <div class="welcome__image">
+               <img src="{%for data in welcome_section%}{{data.image.url}}{%endfor%}" alt="welcome image">
+            </div>
+            <div class="welcome__title title">
+               <h4 class="title__item">{%for data in welcome_section%}{{data.item_title}}{%endfor%}</h4>
+               <h1 class="title__main">{%for data in welcome_section%}{{data.title}}{%endfor%}</h1>
+               <p class="title__sub">{%for data in welcome_section%}{{data.sub_title}}{%endfor%}</p>
+            </div>
+            <div class="welcome__action">
+               <a class="welcome__arrow" href="#catalog"></a>
+            </div>
+         </div>
+         {% for promo in products_promo reversed %}
+         {% if promo.published %}
+         <div class="welcome__content swiper-slide promo-slide" data-order-container="{{promo.pk}}">
+            <div class="promo-slide__inner">
+               <div class="promo-slide__info" style="display: none;">
+                  <h3 class="promo-slide__product-name" data-order-product-name>{{promo.name}}</h3>
+                  <div class="promo-slide__product-price" data-order-product-price>{{promo.price}}</div>
+               </div>
+               <div class="promo-slide__image">
+                  <picture>
+                      <source srcset="{{promo.image_mobile.url}}" media="(max-width: 768px)" type="image/webp">
+                      <img src="{{promo.image.url}}" data-order-product-image alt="banner promo image">
+                  </picture>
+               </div>
+               {% if promo.price != 0 %}
+               <div class="promo-slide__action">
+                  <div class="promo-slide__more-button">
+                     <a href="#" data-order-button-add>Додати в корзину</a>
+                  </div>
+               </div>
+               {% endif %}
+            </div>
+         </div>
+         {% endif %}
+         {% endfor %}
+      </div>
+   </div>
+</section>
+<section class="info-delivery">
+    <div class="container">
+        <div class="info-delivery__inner">
+            <div class="info-delivery__title title">
+                <h2 class="title__main">Райони доставки</h2>
+            </div>
+            <ul class="info-delivery__list">
+                {% for district in districts %}
+                <li class="info-delivery__item">
+                    {{district.name}}
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="info-delivery__text">
+                Якщо ви не знайшли вашого району в переліку - можете замовити на <a class="info-delivery__link" target="_blank" href="https://bond.delivery/restaurant/george39s-delivery/">BOND.DELIVERY</a>
+            </p>
+        </div>
+    </div>
+</section>
+<section class="catalog" id="catalog">
+   <div class="catalog__container container">
+      <div class="catalog__inner">
+         <div class="catalog__title title">
+            <h4 class="title__item">{%for data in menu_section%}{{data.item_title}}{%endfor%}</h4>
+            <h2 class="title__main">{%for data in menu_section%}{{data.title}}{%endfor%}</h2>
+            <p class="title__sub">{%for data in menu_section%}{{data.sub}}{%endfor%}</p>
+         </div>
+         <div class="catalog__items catalog-items">
+             <div class="catalog-items__cart">
+               <img class="catalog-items__image" loading="lazy" src="{% static 'main/images/combo/combo.jpg' %}" alt="cart image">
+               <div class="catalog-items__body">
+                  <h4 class="catalog-items__title">Комбо</h4>
+                  <a class="catalog-items__link" href="{% url 'combo' %}">Детальніше</a>
+               </div>
+            </div>
+            {% for category in categories %}
+               <div class="catalog-items__cart">
+                  <img class="catalog-items__image" loading="lazy" src="{{category.image.url}}" alt="cart image">
+                  <div class="catalog-items__body">
+                     <h4 class="catalog-items__title">{{category.name}}</h4>
+                     <a class="catalog-items__link" href="{{category.get_absolute_url}}">Детальніше</a>
+                  </div>
+               </div>
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}

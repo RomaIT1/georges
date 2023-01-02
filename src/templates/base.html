@@ -1,0 +1,424 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+   <link rel="apple-touch-icon" sizes="57x57" href="{% static 'main/images/favicon/apple-icon-57x57.png' %}">
+   <link rel="apple-touch-icon" sizes="60x60" href="{% static 'main/images/favicon/apple-icon-60x60.png' %}">
+   <link rel="apple-touch-icon" sizes="72x72" href="{% static 'main/images/favicon/apple-icon-72x72.png' %}">
+   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'main/images/favicon/apple-icon-76x76.png' %}">
+   <link rel="apple-touch-icon" sizes="114x114" href="{% static 'main/images/favicon/apple-icon-114x114.png' %}">
+   <link rel="apple-touch-icon" sizes="120x120" href="{% static 'main/images/favicon/apple-icon-120x120.png' %}">
+   <link rel="apple-touch-icon" sizes="144x144" href="{% static 'main/images/favicon/apple-icon-144x144.png' %}">
+   <link rel="apple-touch-icon" sizes="152x152" href="{% static 'main/images/favicon/apple-icon-152x152.png' %}">
+   <link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/images/favicon/apple-icon-180x180.png' %}">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+   <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'main/images/favicon/android-icon-192x192.png' %}">
+   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/favicon/favicon-32x32.png' %}">
+   <link rel="icon" type="image/png" sizes="96x96" href="{% static 'main/images/favicon/favicon-96x96.png' %}">
+   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/images/favicon/favicon-16x16.png' %}">
+   <link rel="manifest" href="{% static 'main/images/favicon/manifest.json' %}">
+   <meta name="msapplication-TileColor" content="#ffffff">
+   <meta name="msapplication-TileImage" content="{% static 'main/images/favicon/ms-icon-144x144.png' %}">
+   <meta name="theme-color" content="#ffffff">
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'main/css/style.min.css' %}">
+   <meta name="description" content="GEORGES'S - Доставка їжі додому прямо зараз. Доставка фастфуду по Одесі. Доставка їжі по всій Одесі. Бургери, картопля фрі, нагетси. Найкращі бургери">
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1124250378197134');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1124250378197134&ev=PageView&noscript=1"
+    /></noscript>
+    <meta name="facebook-domain-verification" content="6i1ayicavkhuaqmwfwz94j3p8y0tf8" />
+   <style>
+      .message {
+         position: fixed;
+         bottom: 0;
+         right: 0;
+         left: 0;
+         width: 100%;
+         text-align: center;
+         color: rgb(255, 255, 255);
+         z-index: 500;
+         font-size: 12px;
+         transform: translate(0, 100%);
+         animation-name: message;
+         animation-duration: 8000ms;
+      }
+
+      .message.success {
+         background-color: #66bb6a !important;
+      }
+
+      .message.error {
+         background-color: #e64a19 !important;
+      }
+
+      .message__inner {
+         padding: 5px 0;
+      }
+      
+      .row {
+         display: flex;
+         align-items: center;
+      }
+      
+      input[type='checkbox']{
+         width: initial;
+      }
+
+      @keyframes message {
+         0% {
+            transform: translate(0, 100%);
+         }
+         20% {
+            transform: translate(0, 0%);
+         }
+         40% {
+            transform: translate(0, 0%);
+         }
+         60% {
+            transform: translate(0, 0%);
+         }
+         80% {
+            transform: translate(0, 0%);
+         }
+         100% {
+            transform: translate(0, 100%);
+         }
+      }
+   </style>
+
+   <title>
+      {% block head_title %}
+      {% endblock %}
+   </title>
+   <meta name="robots" content="index, follow">
+   <meta name="keywords" content="Бургери, Доставка Одеса, Безкоштовна Доставка, Нагести, Фастфуд, Смачні Бургери, Замовити Доставку, Доставка до дверей, Замовити Фастфуд">
+   
+   <meta property="og:title" content="GEORGES'S - Доставка їжі додому прямо зараз. Доставка фастфуду по Одесі. Доставка їжі по Одесі. Бургери, картопля фрі, нагетси. Найкращі бургери в Одесі">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://georges.com.ua/">
+   <meta property="og:image" content="{% static 'main/images/og/image.jpg'%}">
+   <meta property="og:description" content="Замовити бургер і не тільки в GEORGES'S з доставкою до твого будинку і отримати чудовий настрій на цілий день">
+   <meta property="og:site_name" content="Смачні бергери і не тільки в GEORGES'S з доставкою додому">
+
+   <link rel="canonical" href="https://georges.com.ua/">
+
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/css/intlTelInput.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/intlTelInput.min.js"></script>
+   <script>
+    {% for time in work_time %}
+       const START_WORK_TIME = {{time.start_day_time}}
+       const END_WORK_TIME = {{time.end_day_time}}
+    {% endfor %}
+   </script>
+   <script>
+      document.addEventListener('DOMContentLoaded', ()=>{
+         var phones=document.querySelectorAll('input[name=phone]');
+         for (var i = phones.length - 1; i >= 0; i--) {
+            processInput(phones[i]);
+         }
+      });
+      
+      function processInput(phone){
+         var iti = window.intlTelInput(phone,{
+            allowDropdown: false,
+            initialCountry: 'UA',
+            nationalMode: true,
+            autoPlaceholder: 'aggressive',
+            formatOnDisplay: true,
+            separateDialCode: true,
+            utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.15/js/utils.min.js'
+         });
+         phone.addEventListener('input', ()=> {
+            phone.setCustomValidity('');
+             if (!iti.isValidNumber()) phone.setCustomValidity('Не правильний формат');
+         });
+      }
+   </script>
+   <style>
+      .iti {
+         width: 100%;
+      }
+   </style>
+</head>
+
+<body>
+   <div id="root" class="wrapper">
+      <header class="header" id="header">
+   <div class="header__container container">
+      <div class="header__inner">
+         <!-- logo -->
+         <div class="header__logo logo">
+            <a class="logo__link" href="{% url 'home' %}">
+               <img class="logo__image" src="{% for data in info_company %}{{data.logo_image.url}}{% endfor %}" alt="logo image">
+            </a>
+         </div>
+         <div class="header__body">
+            <!-- menu -->
+            <nav class="header__nav nav">
+               <ul class="nav__list">
+                  <li class="nav__item nav__item--sub" data-nav-item-sub>
+                     <span class="nav__link">Меню</span>
+                     <ul class="nav__sub-list">
+                         <li class="nav__sub-item">
+                           <a class="nav__sub-link" href="{% url 'combo' %}">Комбо</a>
+                        </li>
+                        {% for category in categories %}
+                           <li class="nav__sub-item">
+                              <a class="nav__sub-link" href="{{category.get_absolute_url}}">{{category.name}}</a>
+                           </li>
+                        {% endfor %}
+                     </ul>
+                  </li>
+               </ul>
+            </nav>
+            <!-- contacts -->
+            <div class="header__contacts contacts">
+               <div class="contacts__tel contacts-tel">
+                  <ul class="contacts-tel__list">
+                     {% for data in numbers %}
+                        <li class="contacts-tel__item">
+                           <a class="contact-tel__link" href="tel:{{data.value}}">{{data.value}}</a>
+                        </li>
+                     {% endfor %}
+                  </ul>
+               </div>
+               <div class="contacts__address contacts-address">
+                  <ul class="contacts-address__list">
+                     {% for data in address %}
+                        <li class="contacts-address__item">
+                           <svg class="contacts-address__icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                              <path d="M12,2C8.1,2,5,5.1,5,9c0,6,7,13,7,13s7-7.1,7-13C19,5.1,15.9,2,12,2z M12,11.5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5
+                              s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z" />
+                           </svg>
+                           <a class="contacts-address__link" href="{{ data.link }}" target="_blank">
+                              {{ data.name }}
+                           </a>
+                        </li>
+                     {% endfor %}
+                  </ul>
+               </div>
+            </div>
+            <!-- Social -->
+            <div class="header__social social">
+               <ul class="social__list">
+                  <!-- Facebook -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.facebook_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="60px" height="60px">
+                        <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z" />
+                     </svg>
+                     </a>
+                  </li>
+                  <!-- TikTok -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.tiktok_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="48px" height="48px">
+                           <path d="M 6 3 C 4.3550302 3 3 4.3550302 3 6 L 3 18 C 3 19.64497 4.3550302 21 6 21 L 18 21 C 19.64497 21 21 19.64497 21 18 L 21 6 C 21 4.3550302 19.64497 3 18 3 L 6 3 z M 12 7 L 14 7 C 14 8.005 15.471 9 16 9 L 16 11 C 15.395 11 14.668 10.734156 14 10.285156 L 14 14 C 14 15.654 12.654 17 11 17 C 9.346 17 8 15.654 8 14 C 8 12.346 9.346 11 11 11 L 11 13 C 10.448 13 10 13.449 10 14 C 10 14.551 10.448 15 11 15 C 11.552 15 12 14.551 12 14 L 12 7 z"/>
+                        </svg>
+                     </a>
+                  </li>
+                  <!-- Instagram -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.instagram_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="60px" height="60px">    <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"/></svg>
+                     </a>
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="header__action">
+            <div class="header__cart cart" data-popup-open="cart">
+               <a class="cart__link" href="#">
+                  <svg class="cart__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 294.038 294.038" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 294.038 294.038">
+                     <g>
+                        <path d="m289.513,86.441c-3.481-5.22-12.181-10.441-19.142-10.441l-224.475-15.661-8.701-27.842c0-1.74-1.74-5.22-5.22-5.22l-20.882-6.96c-3.48-1.74-8.701,0-10.441,5.22-1.74,3.48 0,8.701 5.22,10.441l17.401,5.22 8.701,29.582 34.802,120.068c2.488,9.083 7.761,16.548 14.617,21.943-7.796,6.404-12.894,15.974-12.894,26.78 0,19.141 15.661,34.802 34.802,34.802s34.802-15.661 34.802-34.802c0-6.351-1.844-12.251-4.855-17.401h67.151c-3.01,5.151-4.855,11.05-4.855,17.401 0,19.141 15.661,34.802 34.802,34.802 19.159,0 34.802-15.661 34.802-34.802 0-9.379-3.793-17.889-9.884-24.17 8.526-5.429 14.913-13.851 16.862-24.553l20.882-81.786c1.725-8.7 1.725-15.661-3.495-22.621zm-186.21,170.532c-10.441,0-17.401-6.96-17.401-17.401s6.96-17.401 17.401-17.401c8.701,0 17.401,6.96 17.401,17.401s-6.961,17.401-17.401,17.401zm127.028,0c-10.441,0-17.401-6.96-17.401-17.401s6.96-17.401 17.401-17.401c10.458,0 17.401,6.96 17.401,17.401s-6.96,17.401-17.401,17.401zm26.102-69.605c-1.462,8.805-9.223,16.026-18.88,18.184-2.332-0.505-4.733-0.783-7.222-0.783-3.602,0-7.013,0.713-10.284,1.74h-106.461c-3.271-1.027-6.682-1.74-10.284-1.74-0.818,0-1.584,0.191-2.384,0.244-7.552-2.906-14.147-9.762-16.775-17.645l-31.321-107.888 215.775,15.661c3.48,0 5.22,1.74 6.96,3.48 1.74,1.74 1.74,5.22 1.74,6.96l-20.864,81.787z" />
+                     </g>
+                  </svg>
+                  <span class="cart__value"data-cart-total-amount>0</span>
+               </a>
+            </div>
+            <div class="header__menu-icon menu-icon" id="menu-icon">
+               <span></span>
+            </div>
+         </div>
+      </div>
+   </div>
+</header>
+      <main class="page">
+        {% block content %}
+         {% endblock %}
+      </main>
+      <footer class="footer">
+   <div class="footer__container container">
+      <div class="footer__inner">
+         <div class="footer__logo logo">
+            <a class="logo__link" href="{% url 'home' %}">
+               <img class="logo__image" src="{% for data in info_company %}{{data.logo_image.url}}{% endfor %}" alt="logo image">
+            </a>
+         </div>
+         <div class="footer__contacts contacts">
+            <div class="contacts__tel contacts-tel">
+               <ul class="contacts-tel__list">
+                  {% for data in numbers %}
+                    <li class="contacts-tel__item">
+                       <a class="contact-tel__link" href="tel:{{data.value}}">{{data.value}}</a>
+                    </li>
+                 {% endfor %}
+               </ul>
+            </div>
+            <div class="contacts__address contacts-address">
+               <ul class="contacts-address__list">
+                  {% for data in address %}
+                    <li class="contacts-address__item">
+                       <svg class="contacts-address__icon" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                          <path d="M12,2C8.1,2,5,5.1,5,9c0,6,7,13,7,13s7-7.1,7-13C19,5.1,15.9,2,12,2z M12,11.5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5
+                          s2.5,1.1,2.5,2.5S13.4,11.5,12,11.5z" />
+                       </svg>
+                       <a class="contacts-address__link" href="{{ data.link }}" target="_blank">
+                          {{ data.name }}
+                       </a>
+                    </li>
+                 {% endfor %}
+               </ul>
+            </div>
+         </div>
+         <div class="footer__social social">
+           <ul class="social__list">
+                  <!-- Facebook -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.facebook_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="60px" height="60px">
+                        <path d="M15,3C8.373,3,3,8.373,3,15c0,6.016,4.432,10.984,10.206,11.852V18.18h-2.969v-3.154h2.969v-2.099c0-3.475,1.693-5,4.581-5 c1.383,0,2.115,0.103,2.461,0.149v2.753h-1.97c-1.226,0-1.654,1.163-1.654,2.473v1.724h3.593L19.73,18.18h-3.106v8.697 C22.481,26.083,27,21.075,27,15C27,8.373,21.627,3,15,3z" />
+                     </svg>
+                     </a>
+                  </li>
+                  <!-- TikTok -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.tiktok_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" width="48px" height="48px">
+                           <path d="M 6 3 C 4.3550302 3 3 4.3550302 3 6 L 3 18 C 3 19.64497 4.3550302 21 6 21 L 18 21 C 19.64497 21 21 19.64497 21 18 L 21 6 C 21 4.3550302 19.64497 3 18 3 L 6 3 z M 12 7 L 14 7 C 14 8.005 15.471 9 16 9 L 16 11 C 15.395 11 14.668 10.734156 14 10.285156 L 14 14 C 14 15.654 12.654 17 11 17 C 9.346 17 8 15.654 8 14 C 8 12.346 9.346 11 11 11 L 11 13 C 10.448 13 10 13.449 10 14 C 10 14.551 10.448 15 11 15 C 11.552 15 12 14.551 12 14 L 12 7 z"/>
+                        </svg>
+                     </a>
+                  </li>
+                  <!-- Instagram -->
+                  <li class="social__item">
+                     <a class="social__link" href="{%for data in info_company%}{{data.instagram_link}}{%endfor%}" target="_blank">
+                        <svg class="social__icon" fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="60px" height="60px">    <path d="M 9.9980469 3 C 6.1390469 3 3 6.1419531 3 10.001953 L 3 20.001953 C 3 23.860953 6.1419531 27 10.001953 27 L 20.001953 27 C 23.860953 27 27 23.858047 27 19.998047 L 27 9.9980469 C 27 6.1390469 23.858047 3 19.998047 3 L 9.9980469 3 z M 22 7 C 22.552 7 23 7.448 23 8 C 23 8.552 22.552 9 22 9 C 21.448 9 21 8.552 21 8 C 21 7.448 21.448 7 22 7 z M 15 9 C 18.309 9 21 11.691 21 15 C 21 18.309 18.309 21 15 21 C 11.691 21 9 18.309 9 15 C 9 11.691 11.691 9 15 9 z M 15 11 A 4 4 0 0 0 11 15 A 4 4 0 0 0 15 19 A 4 4 0 0 0 19 15 A 4 4 0 0 0 15 11 z"/></svg>
+                     </a>
+                  </li>
+               </ul>
+         </div>
+      </div>
+   </div>
+</footer>
+      <div class="popup cart-popup" data-popup-init="cart">
+   <div class="popup__inner">
+      <div class="popup__content">
+         <button class="popup__close close-icon" data-popup-close="cart">
+            <span></span>
+         </button>
+         <div class="popup__title title">
+            <h4 class="title__main">Кошик:</h2>
+         </div>
+         <div class="popup__items popup-items cart__products cart-products">
+            <p class="cart-products__message" id="cart-message"></p>
+            <ul class="cart-products__list" id="cart-products-root"></ul>
+         </div>
+         <div class="cart-popup__order-info">
+             <div class="cart-popup__total">
+               Доставка: <span data-cart-delivery-price></span> грн
+            </div>
+            <div class="cart-popup__total">
+               Загальна сума: <span data-cart-total-price></span> грн
+            </div>
+         </div>
+         <form class="popup__form popup-form form" method="post" id="cart-from">
+            {% csrf_token %}
+            {{order_form.details}}
+            {{order_form.amount}}
+            {{order_form.user_agent}}
+            <div class="popup-form__field form__field">
+               {{order_form.name}}
+            </div>
+            <div class="popup-form__field form__field">
+               {{order_form.phone}}
+            </div>
+            <div class="popup-form__field select-wrap  form__field">
+               <label>
+                  {{order_form.districts}}
+               </label>
+            </div>
+            <div class="popup-form__field form__field">
+               {{order_form.address}}
+            </div>
+            <div class="popup-form__field form__field select-wrap">
+                <label>
+                    <select name="payment_method" class="combo-form__select">
+                       <option value="card">Оплата картою</option>
+                       <option value="cash">Оплата готівкою</option>
+                    </select>
+                </label>
+            </div>
+            <div class="popup-form__field  form__field">
+                <label class="form__row row">
+                    {{order_form.self_pickup}}
+                    <span>Самовивіз</span>
+                </label>
+            </div>
+            <div class="popup-form__field  form__field">
+               {{order_form.comment_client}}
+            </div>
+            <button class="popup-form__button  form__button">Завершити замовлення</button>
+         </form>
+      </div>
+   </div>
+</div>
+   </div>
+   {% if messages %}
+      {% for message in messages %}
+      <div class="message {{message.tags}}">
+         <div class="container">
+            <div class="message__inner">
+               {{message}}
+            </div>
+         </div>
+      </div>
+      {% endfor %}
+   {% endif %}
+   <script src="{% static 'main/js/main.min.js' %}"></script>
+   <script src="{% static 'main/js/crtprd.js' %}?v=1.2.0"></script>
+   <script src="{% static 'main/js/promo-slider.js' %}"></script>
+   <script>
+       document.querySelector('[data-popup-open="cart"]')
+       .addEventListener('click', event => {
+            fbq('track', 'InitiateCheckout')
+       })
+       
+       document.querySelectorAll('[data-combo-button-add], [data-order-button-add]').forEach(button => {
+           button.addEventListener('click', event => {
+               fbq('track', 'AddToCart', {
+                value: '',
+                currency: 'UAH',
+                content_ids: '',
+                content_type: 'product',
+              })
+           })
+       })
+   </script>
+</body>
+</html>

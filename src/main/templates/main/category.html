@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}
+   GEORGE'S - {{ category.name }}
+{% endblock %}
+{% block content %}
+<section class="products" id="products">
+   <div class="products__container container">
+      <div class="products__inner">
+         <div class="products__title title">
+            <h4 class="title__item">{%for data in category_section%}{{data.item_title}}{%endfor%}</h4>
+            <h1 class="title__main">{%for data in category_section%}{{data.title}}{%endfor%} {{ category.name }}</h1>
+            <p class="title__sub">{%for data in category_section%}{{data.sub_title}}{%endfor%}</p>
+         </div>
+         <div class="products__action comeback">
+            <a href="{% url 'home' %}" class="comeback__link">Повернутись на головну</a>
+         </div>
+         <div class="products__items products-items catalog-items">
+            {% for product in products %}
+                {% if product.published %}
+                    <div class="catalog-items__cart catalog-{{product.category.slug}}" data-order-container="{{product.pk}}">
+                        {% if product.category.slug == "promo" %}
+                            <img class="catalog-items__image" data-order-product-image lazy="loading" 
+                            src="{{product.image_mobile.url}}" alt="cart image">
+                        {% else %}
+                        <img class="catalog-items__image" data-order-product-image lazy="loading" 
+                            src="{{product.image.url}}" alt="cart image">
+                        {% endif %}
+               <div class="catalog-items__body">
+                  <h4 class="catalog-items__title" data-order-product-name>{{product.name}}</h4>
+                  <p class="catalog-items__description">{{product.description}}</p>
+                  <div class="catalog-items__info catalog-info">
+                     <dl class="catalog-info__list">
+                        {% if product.amount %}
+                           <div class="catalog-info__feature">
+                              <dt class="catalog-info__name" data-order-product-feature-name>Кількість</dt>:<dd class="catalog-info__value" data-order-product-feature-value>{{product.amount.value}}</dd>
+                           </div>
+                        {% endif %}
+                        {% if product.size %}
+                           <div class="catalog-info__feature">
+                              <dt class="catalog-info__name" data-order-product-feature-name>Розмір</dt>:<dd class="catalog-info__value" data-order-product-feature-value>{{product.size.value}}</dd>
+                           </div>
+                        {% endif %}
+                        {% if product.volume %}
+                           <div class="catalog-info__feature">
+                              <dt class="catalog-info__name" data-order-product-feature-name>Об'єм</dt>:<dd class="catalog-info__value" data-order-product-feature-value>{{product.volume.value}}</dd>
+                           </div>
+                        {% endif %}
+                        <div class="catalog-info__feature">
+                           <dt class="catalog-info__name" data-order-product-feature-name>Ціна</dt>:<dd class="catalog-info__value" data-order-product-feature-value data-order-product-price>{{product.price}}</dd>грн
+                        </div>
+                     </dl>
+                  </div>
+                  {% if product.price != 0 %}
+                  <a class="catalog-items__link" data-order-button-add href="#" >Додати в корзину</a>
+                  {% endif %}
+               </div>
+            </div>
+                {% endif %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   <script>
+     fbq('track', 'ViewContent', {
+        value: '',
+        currency: 'UAH',
+        content_ids: '',
+        content_type: 'product',
+      });
+    </script>
+</section>
+{% endblock %}
