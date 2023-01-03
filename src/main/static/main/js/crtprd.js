@@ -404,9 +404,15 @@ class Cart {
     });
   }
   renderTotalPrice() {
-    this.$cartTotalPrice.textContent = this.CartStorage.totalPromoPrice
+    const total_price = this.CartStorage.totalPromoPrice
       ? this.CartStorage.totalPromoPrice
       : this.CartStorage.totalPrice;
+
+    const promo_text = this.CartStorage.totalPromoPrice
+      ? `<span style="text-decoration: line-through;">${this.CartStorage.totalPrice} грн</span>`
+      : "";
+
+    this.$cartTotalPrice.innerHTML = `${promo_text} ${total_price}`;
   }
   renderDeliveryPrice() {
     console.log("laskf");
